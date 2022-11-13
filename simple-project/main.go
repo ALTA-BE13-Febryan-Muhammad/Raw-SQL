@@ -157,14 +157,11 @@ func main() {
 			fmt.Scanln(&bacaUser.Id)
 
 			results := db.QueryRow("SELECT id, name, gender, status from users where id = ?", &bacaUser.Id)
-			// if errSelect != nil { //handling error saat proses menjalankan query
-			// 	// log.Fatal("error select ", errSelect.Error())
-			// }
 			var dataUser User
 			err := results.Scan(&dataUser.Id, &dataUser.Name, &dataUser.Gender, &dataUser.Status)
 
 			if err != nil {
-				return
+				log.Fatal("error select ", err.Error())
 			}
 			fmt.Printf("id: %d, name: %s, gender: %s, status: %s\n", dataUser.Id, dataUser.Name, dataUser.Gender, dataUser.Status)
 			//----------------
