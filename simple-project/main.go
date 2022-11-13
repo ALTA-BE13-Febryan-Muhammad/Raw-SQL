@@ -107,7 +107,7 @@ func main() {
 			statement, errPrepare := db.Prepare(`UPDATE users set name = ?, gender = ?, status = ? where id = ?`)
 			if errPrepare != nil {
 				log.Fatal("error prepare update", errPrepare.Error())
-			}
+			}cd ..errPrepare
 
 			result, errExec := statement.Exec(updateUser.Name, updateUser.Gender, updateUser.Status, updateUser.Id)
 			if errExec != nil {
